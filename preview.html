@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel & Jeonghye</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Serif+KR&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family:'Noto Serif KR', serif;
+  background:#f8f5f0;
+  color:#333;
+  text-align:center;
+}
+
+section { padding:80px 20px; }
+
+.hero {
+  height:100vh;
+  background:url('YOUR_FIRST_IMAGE.jpg') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  color:white;
+  position:relative;
+}
+
+.hero::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.25);
+}
+
+.hero * { position:relative; z-index:2; }
+
+h1 {
+  font-family:'Playfair Display';
+  font-size:40px;
+  letter-spacing:2px;
+}
+
+.names {
+  font-size:26px;
+  margin-top:10px;
+}
+
+.scroll {
+  margin-top:30px;
+  font-size:12px;
+  opacity:0.8;
+}
+
+/* 카드 */
+.card {
+  max-width:600px;
+  margin:auto;
+}
+
+.title {
+  font-size:20px;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+.divider {
+  width:40px;
+  height:2px;
+  background:#c9a96e;
+  margin:20px auto;
+}
+
+/* 캘린더 */
+.calendar {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+  max-width:350px;
+  margin:20px auto;
+}
+
+.calendar div {
+  padding:10px;
+}
+
+.highlight {
+  background:black;
+  color:white;
+  border-radius:50%;
+}
+
+/* 디데이 */
+.countdown {
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+
+.box {
+  background:#eee;
+  padding:15px;
+  border-radius:10px;
+  width:70px;
+}
+
+/* 버튼 */
+.btn {
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 20px;
+  border:1px solid #333;
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+}
+
+/* 갤러리 */
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.gallery img {
+  width:100%;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>WE ARE GETTING MARRIED</h1>
+  <div class="names">Daniel & Jeonghye</div>
+  <div class="scroll">Scroll Down</div>
+</section>
+
+<!-- MESSAGE -->
+<section>
+  저희 두 사람의 소중한 시작을 함께 축복해 주시면 감사하겠습니다.<br/><br/>
+  화환은 정중히 사양하며<br/>
+  따뜻한 마음만 감사히 받겠습니다.
+</section>
+
+<!-- 캘린더 + 디데이 -->
+<section>
+  <div class="title">SAVE THE DATE</div>
+  <div class="divider"></div>
+
+  <h2>2025.11.21</h2>
+
+  <div class="calendar">
+    <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+
+    <div></div><div></div><div></div><div></div><div></div><div></div><div>1</div>
+    <div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div>
+    <div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+    <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+    <div class="highlight">21</div>
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<!-- 한국 -->
+<section>
+  <div class="title">KOREAN WEDDING</div>
+  <div class="divider"></div>
+
+  <p>2025년 11월 21일 금요일 오후 5시</p>
+  <p>트라디노이</p>
+  <p>서울 강남구 도곡로99길 16 6층</p>
+
+  <a class="btn" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
+
+  <p style="margin-top:20px;">
+  지하철: 삼성역 3번출구 도보 8분<br/>
+  버스: 강남01, 강남06, 4319<br/>
+  자차: 도곡로99길 16
+  </p>
+</section>
+
+<!-- 미국 -->
+<section>
+  <div class="title">US RECEPTION</div>
+  <div class="divider"></div>
+
+  <p>December 12, 2025 5:00 PM</p>
+  <p>The Golf Club at Twin Creeks</p>
+
+  <a class="btn" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">
+    Open Map
+  </a>
+</section>
+
+<!-- RSVP -->
+<section>
+  <div class="title">RSVP</div>
+  <div class="divider"></div>
+
+  <a class="btn" href="YOUR_GOOGLE_FORM">참석 여부 전달</a>
+</section>
+
+<!-- 갤러리 -->
+<section>
+  <div class="title">GALLERY</div>
+  <div class="divider"></div>
+
+  <div class="gallery">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+  </div>
+</section>
+
+<script>
+const target = new Date("2025-11-21T17:00:00");
+
+function updateCountdown(){
+  const now = new Date();
+  const diff = target - now;
+
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff/(1000*60*60))%24);
+  const m = Math.floor((diff/(1000*60))%60);
+  const s = Math.floor((diff/1000)%60);
+
+  document.getElementById("countdown").innerHTML = `
+    <div class="box">${d}<br>DAYS</div>
+    <div class="box">${h}<br>HRS</div>
+    <div class="box">${m}<br>MIN</div>
+    <div class="box">${s}<br>SEC</div>
+  `;
+}
+
+setInterval(updateCountdown,1000);
+</script>
+
+</body>
+</html>
