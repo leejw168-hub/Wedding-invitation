@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ⬇️ 모바일 브라우저의 전화번호 자동 하이퍼링크 생성을 차단합니다 -->
+<meta name="format-detection" content="telephone=no">
 <title>Daniel & Jeonghye Wedding</title>
 
 <meta property="og:title" content="Daniel & Jeonghye Wedding" />
@@ -470,6 +472,26 @@ h1, .names { display: none; }
   margin: 4px 0;
 }
 .gift-name { font-size: 13px; color: var(--gray); margin-top: 4px; }
+
+/* ⬇️ 신규 추가된 미니멀 복사 버튼 스타일 */
+.gift-copy-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 14px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.gift-copy-btn:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
 .gift-note {
   font-family: 'Cormorant Garamond', serif;
   font-size: 17px;
@@ -724,8 +746,11 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
 
     <div class="gift-card reveal d2">
       <p class="gift-flag">🇰🇷   한국 계좌</p>
-      <p class="gift-number">992801-01-138235</p>
+      <!-- 스크립트에서 추출하기 위해 id="kr-account"를 부여했습니다 -->
+      <p class="gift-number" id="kr-account">992801-01-138235</p>
       <p class="gift-name">국민은행  ·  김정혜</p>
+      <!-- ⬇️ 계좌 복사 버튼 추가 -->
+      <button class="gift-copy-btn" onclick="copyOnlyNumbers()">복사하기</button>
     </div>
 
     <div class="gift-card reveal d3">
@@ -828,6 +853,26 @@ function updateCountdowns() {
 }
 updateCountdowns();
 setInterval(updateCountdowns, 1000);
+
+// ⬇️ 한국 계좌번호에서 대시(-)를 제외한 '숫자만' 추출하여 복사하는 스크립트 함수
+function copyOnlyNumbers() {
+  const rawText = document.getElementById('kr-account').innerText;
+  // 정규식을 사용해 숫자(0-9)만 남기고 모두 제거합니다. 결과값: 99280101138235
+  const cleanNumbers = rawText.replace(/[^0-9]/g, '');
+
+  navigator.clipboard.writeText(cleanNumbers).then(() => {
+    alert('계좌번호가 복사되었습니다.');
+  }).catch(err => {
+    // 구형 모바일 브라우저 대응용 fallback 로직
+    const t = document.createElement("textarea");
+    document.body.appendChild(t);
+    t.value = cleanNumbers;
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+    alert('계좌번호가 복사되었습니다.');
+  });
+}
 </script>
 
 </body>
