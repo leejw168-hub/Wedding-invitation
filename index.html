@@ -5,270 +5,638 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daniel & Jeonghye Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Serif+KR&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin:0;
-  font-family:'Noto Serif KR', serif;
-  background:#f8f5f0;
-  color:#333;
-  text-align:center;
+:root {
+  --black: #0a0a0a;
+  --white: #fafaf8;
+  --cream: #f2efe9;
+  --gold: #b8965a;
+  --gold-light: #d4af7a;
+  --gray: #888;
+  --light-gray: #ddd;
 }
 
-section { padding:80px 20px; }
+* { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Noto Serif KR', serif;
+  background: var(--white);
+  color: var(--black);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLL FADE IN ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── HERO ─── */
 .hero {
   position: relative;
-  min-height: 100vh; 
+  min-height: 100vh;
   background-image: url('./poster.jpg');
   background-position: center top;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: #f8f5f0;
+  background-color: var(--cream);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   text-align: center;
-  color: #333;
   padding: 40px 20px;
-  box-sizing: border-box;
 }
-
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-}
-
-.hero * { position:relative; z-index:2; }
 
 h1 { display: none; }
 .names { display: none; }
 
-.scroll {
+.scroll-indicator {
   margin-top: 20px;
-  font-size: 13px;
-  font-weight: bold;
-  color: #888;
-  letter-spacing: 2px;
-  animation: bounce 2s infinite;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gray);
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+.scroll-indicator::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gray), transparent);
+  margin: 10px auto 0;
+  animation: line-grow 2.5s ease-in-out infinite;
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
-/* 카드 */
-.card {
-  max-width:600px;
-  margin:auto;
+@keyframes line-grow {
+  0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+  50% { transform: scaleY(1); opacity: 1; }
 }
 
-.title {
-  font-size:20px;
-  letter-spacing:2px;
-  margin-bottom:20px;
+/* ─── SECTIONS ─── */
+section {
+  padding: 80px 30px;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
-.divider {
-  width:40px;
-  height:2px;
-  background:#c9a96e;
-  margin:20px auto;
+section.full-width {
+  max-width: none;
+  padding: 80px 30px;
 }
 
-/* 캘린더 */
+/* ─── DECORATIVE LINE ─── */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 28px auto;
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.ornament::after {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+.ornament-diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ─── SECTION TITLE ─── */
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+/* ─── INTRO TEXT ─── */
+.intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 2;
+  color: #444;
+  font-style: italic;
+}
+
+.no-flower {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  color: var(--gray);
+  letter-spacing: 1px;
+  line-height: 2;
+  border-top: 1px solid var(--light-gray);
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+/* ─── DATE ─── */
+.big-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 8vw, 64px);
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: var(--black);
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+/* ─── CALENDAR ─── */
 .calendar {
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:8px;
-  max-width:350px;
-  margin:20px auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  max-width: 340px;
+  margin: 24px auto;
 }
 
-.calendar div {
-  padding:10px;
+.calendar .day-header {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--gray);
+  padding: 8px 4px;
+}
+
+.calendar .day {
+  padding: 10px 4px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
   display: flex;
   justify-content: center;
   align-items: center;
   aspect-ratio: 1;
 }
 
-.highlight {
-  background:black;
-  color:white;
-  border-radius:50%;
+.calendar .day.highlight {
+  background: var(--black);
+  color: var(--white);
+  border-radius: 50%;
+  font-weight: 600;
+  position: relative;
 }
 
-/* 디데이 */
+.calendar .day.highlight::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+}
+
+/* ─── COUNTDOWN ─── */
 .countdown {
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:30px;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-top: 40px;
 }
 
-.box {
-  background:#eee;
-  padding:15px 10px;
-  border-radius:10px;
-  width:70px;
-  font-size: 14px;
+.countdown-box {
+  text-align: center;
+  padding: 20px 24px;
+  border: 1px solid var(--light-gray);
+  min-width: 70px;
+  position: relative;
+}
+
+.countdown-box:not(:last-child) {
+  border-right: none;
+}
+
+.countdown-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--black);
+  display: block;
+}
+
+.countdown-label {
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gray);
+  display: block;
+  margin-top: 6px;
+}
+
+/* ─── VENUE ─── */
+.venue-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 4px 0;
+}
+
+.venue-address {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin: 12px 0;
+}
+
+.venue-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  color: #555;
+  margin: 8px 0 20px;
+}
+
+/* ─── TRANSPORT ─── */
+.transport {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 300px;
+  margin: 28px auto 0;
+  text-align: left;
+}
+
+.transport-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  padding: 14px 16px;
+  background: var(--cream);
+  border-left: 2px solid var(--gold);
+}
+
+.transport-icon {
+  font-size: 18px;
+  flex-shrink: 0;
   line-height: 1.4;
 }
 
-/* 버튼 */
+.transport-text {
+  flex: 1;
+}
+
+.transport-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ─── VENUE DIVIDER ─── */
+.venue-section-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+/* ─── BUTTON ─── */
 .btn {
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 20px;
-  border:1px solid #333;
-  text-decoration:none;
-  color:#333;
-  font-size:14px;
-  transition: all 0.3s;
+  display: inline-block;
+  margin: 16px 6px 0;
+  padding: 12px 24px;
+  border: 1px solid var(--black);
+  text-decoration: none;
+  color: var(--black);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn:hover {
-  background: #333;
-  color: #fff;
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  z-index: -1;
 }
 
-/* 갤러리 */
+.btn:hover::before { transform: translateX(0); }
+.btn:hover { color: var(--white); }
+
+.btn.btn-gold {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn.btn-gold::before { background: var(--gold); }
+.btn.btn-gold:hover { color: var(--white); }
+
+/* ─── RSVP ─── */
+.rsvp-note {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.rsvp-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* ─── GALLERY ─── */
 .gallery {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .gallery img {
-  width:100%;
-  border-radius:10px;
+  width: 100%;
+  aspect-ratio: 4/5;
   object-fit: cover;
+  filter: grayscale(20%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.gallery img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 60px 20px;
+  background: var(--black);
+  color: var(--white);
+}
+
+.footer-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  font-style: italic;
+}
+
+.footer-year {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-top: 12px;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 480px) {
+  .countdown-box { padding: 16px 14px; min-width: 56px; }
+  .countdown-number { font-size: 28px; }
+  .transport { max-width: 100%; }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<!-- HERO -->
+<section class="hero" style="padding: 40px 20px; max-width: none;">
   <h1>WE ARE GETTING MARRIED</h1>
   <div class="names">Daniel & Jeonghye</div>
-  <div class="scroll">Scroll Down</div>
+  <div class="scroll-indicator">SCROLL</div>
 </section>
 
+<!-- INTRO -->
 <section>
-  저희 두 사람의 소중한 시작을 함께 축복해 주시면 감사하겠습니다.<br/><br/>
-  화환은 정중히 사양하며<br/>
-  따뜻한 마음만 감사히 받겠습니다.
+  <div class="reveal">
+    <p class="section-title">WITH LOVE</p>
+    <div class="ornament"><div class="ornament-diamond"></div></div>
+    <p class="intro-text">
+      저희 두 사람의 소중한 시작을<br>
+      함께 축복해 주시면 감사하겠습니다.
+    </p>
+    <div class="no-flower">
+      화환은 정중히 사양하며<br>
+      따뜻한 마음만 감사히 받겠습니다.
+    </div>
+  </div>
 </section>
 
+<!-- SAVE THE DATE -->
 <section>
-  <div class="title">SAVE THE DATE</div>
-  <div class="divider"></div>
-
-  <h2>2026.11.21</h2>
-
-  <div class="calendar">
-    <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
-
-    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-    <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-    <div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
-    <div class="highlight">21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
-    <div>28</div><div>29</div><div>30</div>
+  <div class="reveal">
+    <p class="section-title">SAVE THE DATE</p>
+    <div class="ornament"><div class="ornament-diamond"></div></div>
+    <p class="big-date">2026.11.21</p>
   </div>
 
-  <div class="countdown" id="countdown"></div>
+  <div class="calendar reveal reveal-delay-1">
+    <div class="day-header">일</div><div class="day-header">월</div><div class="day-header">화</div>
+    <div class="day-header">수</div><div class="day-header">목</div><div class="day-header">금</div><div class="day-header">토</div>
+
+    <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div>
+    <div class="day">5</div><div class="day">6</div><div class="day">7</div>
+    <div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div>
+    <div class="day">12</div><div class="day">13</div><div class="day">14</div>
+    <div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div>
+    <div class="day">19</div><div class="day">20</div>
+    <div class="day highlight">21</div>
+    <div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div>
+    <div class="day">26</div><div class="day">27</div>
+    <div class="day">28</div><div class="day">29</div><div class="day">30</div>
+  </div>
+
+  <div class="countdown reveal reveal-delay-2" id="countdown"></div>
 </section>
 
+<!-- KOREAN WEDDING -->
 <section>
-  <div class="title">KOREAN WEDDING</div>
-  <div class="divider"></div>
+  <div class="reveal">
+    <p class="section-title">KOREAN WEDDING</p>
+    <div class="ornament"><div class="ornament-diamond"></div></div>
+    <p class="venue-time">2026년 11월 21일 토요일 오후 5시</p>
+    <p class="venue-name">트라디노이</p>
+    <p class="venue-address">서울 강남구 도곡로99길 16 6층</p>
+    <a class="btn btn-gold" target="_blank" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
+  </div>
 
-  <p>2026년 11월 21일 토요일 오후 5시</p>
-  <p><strong>트라디노이</strong></p>
-  <p style="color: #666; font-size: 14px;">서울 강남구 도곡로99길 16 6층</p>
-
-  <a class="btn" target="_blank" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
-
-  <p style="margin-top:30px; font-size: 14px; color: #555; line-height: 1.8;">
-    지하철: 삼성역 3번출구 도보 8분<br/>
-    버스: 강남01, 강남06, 4319<br/>
-    자차: 도곡로99길 16
-  </p>
+  <div class="transport reveal reveal-delay-2">
+    <div class="transport-item">
+      <span class="transport-icon">🚇</span>
+      <span class="transport-text">
+        <span class="transport-label">지하철</span>
+        삼성역 3번출구 도보 8분
+      </span>
+    </div>
+    <div class="transport-item">
+      <span class="transport-icon">🚌</span>
+      <span class="transport-text">
+        <span class="transport-label">버스</span>
+        강남01, 강남06, 4319
+      </span>
+    </div>
+    <div class="transport-item">
+      <span class="transport-icon">🚗</span>
+      <span class="transport-text">
+        <span class="transport-label">자차</span>
+        도곡로99길 16
+      </span>
+    </div>
+  </div>
 </section>
 
+<div class="venue-section-divider"></div>
+
+<!-- US RECEPTION -->
 <section>
-  <div class="title">US RECEPTION</div>
-  <div class="divider"></div>
-
-  <p>December 12, 2026 5:00 PM</p>
-  <p><strong>The Golf Club at Twin Creeks</strong></p>
-
-  <a class="btn" target="_blank" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">
-    Open Map
-  </a>
+  <div class="reveal">
+    <p class="section-title">US RECEPTION</p>
+    <div class="ornament"><div class="ornament-diamond"></div></div>
+    <p class="venue-time">December 12, 2026 &nbsp;·&nbsp; 5:00 PM</p>
+    <p class="venue-name">The Golf Club at Twin Creeks</p>
+    <p class="venue-address">501 Twin Creeks Dr, Allen, TX</p>
+    <a class="btn btn-gold" target="_blank" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">Open Map</a>
+  </div>
 </section>
 
-<section>
-  <div class="title">RSVP</div>
-  <div class="divider"></div>
-  <p style="font-size: 14px; color: #666; margin-bottom: 20px;">원활한 행사 준비를 위해 참석 여부를 알려주세요.</p>
-  
-  <a class="btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSe38liaa5thvH1CPdNrjFdSmInJ8nLX7PiRI-REKUTNxjpjlg/viewform?usp=sharing&ouid=111656401123429383917" style="margin-right: 10px;">
-    KOREAN WEDDING RSVP
-  </a>
-
-  <a class="btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfIYi80qqWKf3bjINlNHsXl37tNzMcvWQ9e1v8JbNKh1fnJHw/viewform?usp=publish-editor">
-    US RECEPTION RSVP
-  </a>
+<!-- RSVP -->
+<section style="background: var(--cream); max-width: none; padding: 80px 30px;">
+  <div style="max-width: 680px; margin: 0 auto;">
+    <div class="reveal">
+      <p class="section-title">RSVP</p>
+      <div class="ornament"><div class="ornament-diamond"></div></div>
+      <p class="rsvp-note">원활한 행사 준비를 위해 참석 여부를 알려주세요.</p>
+      <div class="rsvp-buttons">
+        <a class="btn" target="_blank"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe38liaa5thvH1CPdNrjFdSmInJ8nLX7PiRI-REKUTNxjpjlg/viewform?usp=sharing&ouid=111656401123429383917">
+          KOREAN WEDDING
+        </a>
+        <a class="btn" target="_blank"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfIYi80qqWKf3bjINlNHsXl37tNzMcvWQ9e1v8JbNKh1fnJHw/viewform?usp=publish-editor">
+          US RECEPTION
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- GALLERY -->
 <section>
-  <div class="title">GALLERY</div>
-  <div class="divider"></div>
-
-  <div class="gallery">
+  <div class="reveal">
+    <p class="section-title">GALLERY</p>
+    <div class="ornament"><div class="ornament-diamond"></div></div>
+  </div>
+  <div class="gallery reveal reveal-delay-1">
     <img src="img1.jpg" alt="Wedding Image 1">
     <img src="img2.jpg" alt="Wedding Image 2">
   </div>
 </section>
 
+<!-- FOOTER -->
+<footer>
+  <div class="reveal">
+    <div class="footer-names">Daniel & Jeonghye</div>
+    <div class="footer-year">— 2026 —</div>
+  </div>
+</footer>
+
 <script>
+// ─── COUNTDOWN ───
 const target = new Date("2026-11-21T17:00:00");
 
-function updateCountdown(){
+function updateCountdown() {
   const now = new Date();
   const diff = target - now;
 
   if (diff <= 0) {
-    document.getElementById("countdown").innerHTML = "<div style='font-size:18px; font-weight:bold;'>축하해주셔서 감사합니다!</div>";
+    document.getElementById("countdown").innerHTML =
+      "<div style='font-family:Cormorant Garamond,serif;font-size:22px;font-weight:300;font-style:italic;color:#888;margin-top:30px;'>축하해주셔서 감사합니다 ♡</div>";
     return;
   }
 
-  const d = Math.floor(diff/(1000*60*60*24));
-  const h = Math.floor((diff/(1000*60*60))%24);
-  const m = Math.floor((diff/(1000*60))%60);
-  const s = Math.floor((diff/1000)%60);
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const m = Math.floor((diff / (1000 * 60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
 
   document.getElementById("countdown").innerHTML = `
-    <div class="box"><strong>${d}</strong><br>DAYS</div>
-    <div class="box"><strong>${h}</strong><br>HRS</div>
-    <div class="box"><strong>${m}</strong><br>MIN</div>
-    <div class="box"><strong>${s}</strong><br>SEC</div>
+    <div class="countdown-box">
+      <span class="countdown-number">${String(d).padStart(2,'0')}</span>
+      <span class="countdown-label">DAYS</span>
+    </div>
+    <div class="countdown-box">
+      <span class="countdown-number">${String(h).padStart(2,'0')}</span>
+      <span class="countdown-label">HRS</span>
+    </div>
+    <div class="countdown-box">
+      <span class="countdown-number">${String(m).padStart(2,'0')}</span>
+      <span class="countdown-label">MIN</span>
+    </div>
+    <div class="countdown-box">
+      <span class="countdown-number">${String(s).padStart(2,'0')}</span>
+      <span class="countdown-label">SEC</span>
+    </div>
   `;
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// ─── SCROLL REVEAL ───
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+reveals.forEach(el => observer.observe(el));
 </script>
 
 </body>
