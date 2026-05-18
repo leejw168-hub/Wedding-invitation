@@ -204,6 +204,49 @@ h1, .names { display: none; }
   margin-top: 32px;
 }
 
+/* ─── FAMILY INFO ─── */
+.family-info {
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid var(--light-gray);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+.family-side {
+  flex: 1;
+  max-width: 200px;
+  padding: 0 24px;
+}
+.family-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin: 0 0 10px;
+}
+.family-parents {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin: 0 0 6px;
+}
+.family-name-kr {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: var(--black);
+  margin: 0;
+}
+.family-divider-v {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  min-height: 80px;
+  flex-shrink: 0;
+}
+
 /* ─── DATE ─── */
 .big-date {
   font-family: 'Cormorant Garamond', serif;
@@ -507,9 +550,19 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
       We would be honored to have you<br>
       bless the first page of our story.
     </p>
-    <div class="no-flower reveal d4">
-      화환은 정중히 사양하며<br>
-      따뜻한 마음만 감사히 받겠습니다.
+
+    <div class="family-info reveal d4">
+      <div class="family-side">
+        <p class="family-label">신랑</p>
+        <p class="family-parents">이성근 · 안선영의 차남</p>
+        <p class="family-name-kr">이재원</p>
+      </div>
+      <div class="family-divider-v"></div>
+      <div class="family-side">
+        <p class="family-label">신부</p>
+        <p class="family-parents">김동식 · 최현옥의 장녀</p>
+        <p class="family-name-kr">김정혜</p>
+      </div>
     </div>
   </div>
 </div>
@@ -570,10 +623,13 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
         </span>
       </div>
     </div>
+
+    <div class="no-flower reveal d4">
+      화환은 정중히 사양하며<br>
+      따뜻한 마음만 감사히 받겠습니다.
+    </div>
   </div>
 </div>
-
-<!-- ══ TAB: US RECEPTION ══ -->
 <div class="tab-panel" id="tab-us">
   <div class="tab-section">
     <p class="eyebrow reveal">SAVE THE DATE</p>
