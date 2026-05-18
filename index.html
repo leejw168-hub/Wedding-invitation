@@ -519,6 +519,27 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   margin-top: 12px;
 }
 
+/* ─── TOAST NOTIFICATION ─── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: rgba(10, 10, 10, 0.85); /* 모던한 반투명 블랙 */
+  color: var(--white);
+  padding: 12px 24px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* 클릭 방해 금지 */
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── MOBILE ─── */
 @media (max-width: 480px) {
   .countdown-box { padding: 14px 10px; min-width: 52px; }
@@ -528,6 +549,17 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   .family-side { padding: 0 8px; }
   .family-name-kr { font-size: 18px; }
   .family-name-en { font-size: 12px; }
+  
+  /* 모바일 환경에서는 화면 하단 중앙 정렬 */
+  .toast {
+    right: 50%;
+    transform: translateX(50%) translateY(10px);
+    bottom: 20px;
+    white-space: nowrap;
+  }
+  .toast.show {
+    transform: translateX(50%) translateY(0);
+  }
 }
 </style>
 </head>
@@ -766,6 +798,9 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
+<!-- 토스트 알림창 요소 추가 -->
+<div id="toast" class="toast">계좌번호가 복사되었습니다.</div>
+
 <footer>
   <div class="footer-names">Daniel & Jeonghye</div>
   <div class="footer-year">— 2026 —</div>
@@ -825,6 +860,42 @@ function countdownHTML(target) {
   `;
 }
 
+// 한국 계좌 복사 및 토스트 알림 스크립트
+function copyOnlyNumbers() {
+  const rawText = document.getElementById('kr-account').innerText;
+  const cleanNumbers = rawText.replace(/[^0-9]/g, '');
+
+  // 토스트 알림을 띄우는 내부 함수
+  const showToast = () => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2000); // 2초 뒤 사라짐
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(cleanNumbers).then(() => {
+      showToast();
+    }).catch(err => {
+      fallbackCopy(cleanNumbers, showToast);
+    });
+  } else {
+    fallbackCopy(cleanNumbers, showToast);
+  }
+}
+
+// 구형 기기 및 브라우저 호환성용 복사 로직
+function fallbackCopy(text, callback) {
+  const t = document.createElement("textarea");
+  document.body.appendChild(t);
+  t.value = text;
+  t.select();
+  document.execCommand('copy');
+  document.body.removeChild(t);
+  callback();
+}
+
 function updateCountdowns() {
   const k = document.getElementById("countdown-korea");
   const u = document.getElementById("countdown-us");
@@ -833,24 +904,6 @@ function updateCountdowns() {
 }
 updateCountdowns();
 setInterval(updateCountdowns, 1000);
-
-// 한국 계좌 복사 스크립트
-function copyOnlyNumbers() {
-  const rawText = document.getElementById('kr-account').innerText;
-  const cleanNumbers = rawText.replace(/[^0-9]/g, '');
-
-  navigator.clipboard.writeText(cleanNumbers).then(() => {
-    alert('계좌번호가 복사되었습니다.');
-  }).catch(err => {
-    const t = document.createElement("textarea");
-    document.body.appendChild(t);
-    t.value = cleanNumbers;
-    t.select();
-    document.execCommand('copy');
-    document.body.removeChild(t);
-    alert('계좌번호가 복사되었습니다.');
-  });
-}
 </script>
 
 </body>
