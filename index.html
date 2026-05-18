@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daniel & Jeonghye</title>
+<title>Daniel & Jeonghye Wedding</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 
@@ -20,44 +20,47 @@ section { padding:80px 20px; }
 
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh; 
   background-image: url('./poster.jpg');
-  background-position: center;
-  background-size: cover;
+  background-position: center top;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-color: #f8f5f0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   text-align: center;
-  color: white;
-  padding: 20px;
+  color: #333;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 .hero::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.25);
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
 }
 
 .hero * { position:relative; z-index:2; }
 
-h1 {
-  font-family:'Playfair Display';
-  font-size:40px;
-  letter-spacing:2px;
-}
-
-.names {
-  font-size:26px;
-  margin-top:10px;
-}
+h1 { display: none; }
+.names { display: none; }
 
 .scroll {
-  margin-top:30px;
-  font-size:12px;
-  opacity:0.8;
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #888;
+  letter-spacing: 2px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
 
 /* 카드 */
@@ -90,6 +93,10 @@ h1 {
 
 .calendar div {
   padding:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
 }
 
 .highlight {
@@ -103,14 +110,16 @@ h1 {
   display:flex;
   justify-content:center;
   gap:15px;
-  margin-top:20px;
+  margin-top:30px;
 }
 
 .box {
   background:#eee;
-  padding:15px;
+  padding:15px 10px;
   border-radius:10px;
   width:70px;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 /* 버튼 */
@@ -122,6 +131,12 @@ h1 {
   text-decoration:none;
   color:#333;
   font-size:14px;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: #333;
+  color: #fff;
 }
 
 /* 갤러리 */
@@ -129,32 +144,32 @@ h1 {
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:10px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .gallery img {
   width:100%;
   border-radius:10px;
+  object-fit: cover;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
-  <h1></h1>
-  <div class="names"></div>
+  <h1>WE ARE GETTING MARRIED</h1>
+  <div class="names">Daniel & Jeonghye</div>
   <div class="scroll">Scroll Down</div>
 </section>
 
-<!-- MESSAGE -->
 <section>
   저희 두 사람의 소중한 시작을 함께 축복해 주시면 감사하겠습니다.<br/><br/>
   화환은 정중히 사양하며<br/>
   따뜻한 마음만 감사히 받겠습니다.
 </section>
 
-<!-- 캘린더 + 디데이 -->
 <section>
   <div class="title">SAVE THE DATE</div>
   <div class="divider"></div>
@@ -164,63 +179,59 @@ h1 {
   <div class="calendar">
     <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
 
-    <div></div><div></div><div></div><div></div><div></div><div></div><div>1</div>
-    <div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div>
-    <div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
-    <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
-    <div class="highlight">21</div>
+    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+    <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
+    <div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+    <div class="highlight">21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
+    <div>28</div><div>29</div><div>30</div>
   </div>
 
   <div class="countdown" id="countdown"></div>
 </section>
 
-<!-- 한국 -->
 <section>
   <div class="title">KOREAN WEDDING</div>
   <div class="divider"></div>
 
-  <p>2026 11월 21일 토요일 오후 5시</p>
-  <p>트라디노이</p>
-  <p>서울 강남구 도곡로99길 16 6층</p>
+  <p>2026년 11월 21일 토요일 오후 5시</p>
+  <p><strong>트라디노이</strong></p>
+  <p style="color: #666; font-size: 14px;">서울 강남구 도곡로99길 16 6층</p>
 
-  <a class="btn" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
+  <a class="btn" target="_blank" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
 
-  <p style="margin-top:20px;">
-  지하철: 삼성역 3번출구 도보 8분<br/>
-  버스: 강남01, 강남06, 4319<br/>
-  자차: 도곡로99길 16
+  <p style="margin-top:30px; font-size: 14px; color: #555; line-height: 1.8;">
+    지하철: 삼성역 3번출구 도보 8분<br/>
+    버스: 강남01, 강남06, 4319<br/>
+    자차: 도곡로99길 16
   </p>
 </section>
 
-<!-- 미국 -->
 <section>
   <div class="title">US RECEPTION</div>
   <div class="divider"></div>
 
   <p>December 12, 2026 5:00 PM</p>
-  <p>The Golf Club at Twin Creeks</p>
+  <p><strong>The Golf Club at Twin Creeks</strong></p>
 
-  <a class="btn" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">
+  <a class="btn" target="_blank" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">
     Open Map
   </a>
 </section>
 
-<!-- RSVP -->
 <section>
   <div class="title">RSVP</div>
   <div class="divider"></div>
-
-  <a class="btn" href="YOUR_GOOGLE_FORM">참석 여부 전달</a>
+  <p style="font-size: 14px; color: #666; margin-bottom: 10px;">원활한 행사 준비를 위해 참석 여부를 알려주세요.</p>
+  <a class="btn" target="_blank" href="YOUR_GOOGLE_FORM">참석 여부 전달</a>
 </section>
 
-<!-- 갤러리 -->
 <section>
   <div class="title">GALLERY</div>
   <div class="divider"></div>
 
   <div class="gallery">
-    <img src="img1.jpg">
-    <img src="img2.jpg">
+    <img src="img1.jpg" alt="Wedding Image 1">
+    <img src="img2.jpg" alt="Wedding Image 2">
   </div>
 </section>
 
@@ -231,20 +242,26 @@ function updateCountdown(){
   const now = new Date();
   const diff = target - now;
 
+  if (diff <= 0) {
+    document.getElementById("countdown").innerHTML = "<div style='font-size:18px; font-weight:bold;'>축하해주셔서 감사합니다!</div>";
+    return;
+  }
+
   const d = Math.floor(diff/(1000*60*60*24));
   const h = Math.floor((diff/(1000*60*60))%24);
   const m = Math.floor((diff/(1000*60))%60);
   const s = Math.floor((diff/1000)%60);
 
   document.getElementById("countdown").innerHTML = `
-    <div class="box">${d}<br>DAYS</div>
-    <div class="box">${h}<br>HRS</div>
-    <div class="box">${m}<br>MIN</div>
-    <div class="box">${s}<br>SEC</div>
+    <div class="box"><strong>${d}</strong><br>DAYS</div>
+    <div class="box"><strong>${h}</strong><br>HRS</div>
+    <div class="box"><strong>${m}</strong><br>MIN</div>
+    <div class="box"><strong>${s}</strong><br>SEC</div>
   `;
 }
 
-setInterval(updateCountdown,1000);
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 
 </body>
