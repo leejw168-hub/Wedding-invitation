@@ -8,7 +8,8 @@
 
 <meta property="og:title" content="Daniel & Jeonghye Wedding" />
 <meta property="og:description" content="저희의 첫 페이지를 함께 축복해주세요." />
-<meta property="og:image" content="https://leejw168-hub.github.io/Wedding-invitation/poster.jpg" /> <meta property="og:url" content="https://leejw168-hub.github.io/Wedding-invitation/" />
+<meta property="og:image" content="https://leejw168-hub.github.io/Wedding-invitation/poster.jpg" />
+<meta property="og:url" content="https://leejw168-hub.github.io/Wedding-invitation/" />
 <meta property="og:type" content="website" />
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
@@ -28,7 +29,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Noto Serif KR', serif; /* 전체 기본 서체 통일 */
+  font-family: 'Noto Serif KR', serif;
   background: var(--white);
   color: var(--black);
   text-align: center;
@@ -53,7 +54,7 @@ body {
 h1, .names { display: none; }
 
 .scroll-indicator {
-  font-family: 'Cinzel', serif; /* 탭 및 안내 지표는 Cinzel 유지 */
+  font-family: 'Cinzel', serif;
   font-size: 10px;
   letter-spacing: 4px;
   color: var(--gray);
@@ -91,7 +92,7 @@ h1, .names { display: none; }
 .tab-btn {
   flex-shrink: 0;
   padding: 20px 18px 17px;
-  font-family: 'Cinzel', serif; /* 탭 버튼 서체 유지 */
+  font-family: 'Cinzel', serif;
   font-size: 8.5px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
@@ -134,12 +135,37 @@ h1, .names { display: none; }
 .d2 { transition-delay: 0.18s; }
 .d3 { transition-delay: 0.28s; }
 .d4 { transition-delay: 0.38s; }
+.d5 { transition-delay: 0.48s; }
 
 /* ─── SECTION WRAPPER ─── */
 .tab-section {
   padding: 72px 30px 80px;
   max-width: 680px;
   margin: 0 auto;
+}
+
+/* ─── 섹션 분리선 ─── */
+.section-divider {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--light-gray), transparent);
+}
+.section-divider-icon {
+  font-size: 14px;
+  color: var(--gold);
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 /* ─── ORNAMENT ─── */
@@ -191,9 +217,9 @@ h1, .names { display: none; }
   margin: 0;
 }
 .intro-en {
-  font-size: 14px; /* Noto Serif 영문에 맞춰 크기 최적화 */
+  font-size: 14px;
   font-weight: 300;
-  font-style: italic; /* 이탤릭으로 감성 유지 */
+  font-style: italic;
   line-height: 2.2;
   color: #666;
   margin-top: 32px;
@@ -269,15 +295,16 @@ h1, .names { display: none; }
   flex-shrink: 0;
 }
 
-/* ─── DATE & CALENDAR ─── */
+/* ─── DATE ─── */
 .big-date {
-  font-size: clamp(34px, 8vw, 56px); /* Noto Serif 숫자에 맞게 크기 소폭 조절 */
+  font-size: clamp(34px, 8vw, 56px);
   font-weight: 300;
   letter-spacing: 2px;
   line-height: 1.1;
   margin: 0 0 8px;
 }
 
+/* ─── CALENDAR ─── */
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -316,7 +343,7 @@ h1, .names { display: none; }
 }
 
 /* ─── COUNTDOWN ─── */
-.countdown { display: flex; justify-content: center; margin-top: 40px; }
+.countdown { display: flex; justify-content: center; margin-top: 36px; }
 .countdown-box {
   text-align: center;
   padding: 20px 22px;
@@ -339,7 +366,35 @@ h1, .names { display: none; }
   margin-top: 6px;
 }
 
+/* ─── CAL ADD BUTTON ─── */
+.cal-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 11px 26px;
+  border: 1px solid var(--light-gray);
+  background: var(--white);
+  color: var(--gray);
+  font-family: 'Cinzel', serif;
+  font-size: 9.5px;
+  letter-spacing: 2.5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+.cal-add-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.cal-add-btn .cal-icon { font-size: 14px; }
+
 /* ─── VENUE ─── */
+.venue-block {
+  padding: 64px 30px 0;
+  max-width: 680px;
+  margin: 0 auto;
+}
 .venue-time {
   font-size: 14.5px;
   font-weight: 300;
@@ -458,7 +513,6 @@ h1, .names { display: none; }
   margin: 4px 0;
 }
 .gift-name { font-size: 13px; color: var(--gray); margin-top: 4px; }
-
 .gift-copy-btn {
   display: inline-block;
   margin-top: 10px;
@@ -471,11 +525,7 @@ h1, .names { display: none; }
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.gift-copy-btn:hover {
-  background: var(--gold);
-  color: var(--white);
-}
-
+.gift-copy-btn:hover { background: var(--gold); color: var(--white); }
 .gift-note {
   font-size: 16px;
   font-weight: 300;
@@ -519,12 +569,12 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   margin-top: 12px;
 }
 
-/* ─── TOAST NOTIFICATION ─── */
+/* ─── TOAST ─── */
 .toast {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background-color: rgba(10, 10, 10, 0.85); /* 모던한 반투명 블랙 */
+  background-color: rgba(10, 10, 10, 0.85);
   color: var(--white);
   padding: 12px 24px;
   font-size: 12px;
@@ -533,12 +583,9 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none; /* 클릭 방해 금지 */
+  pointer-events: none;
 }
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.toast.show { opacity: 1; transform: translateY(0); }
 
 /* ─── MOBILE ─── */
 @media (max-width: 480px) {
@@ -549,17 +596,9 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   .family-side { padding: 0 8px; }
   .family-name-kr { font-size: 18px; }
   .family-name-en { font-size: 12px; }
-  
-  /* 모바일 환경에서는 화면 하단 중앙 정렬 */
-  .toast {
-    right: 50%;
-    transform: translateX(50%) translateY(10px);
-    bottom: 20px;
-    white-space: nowrap;
-  }
-  .toast.show {
-    transform: translateX(50%) translateY(0);
-  }
+  .toast { right: 50%; transform: translateX(50%) translateY(10px); bottom: 20px; white-space: nowrap; }
+  .toast.show { transform: translateX(50%) translateY(0); }
+  .venue-block { padding: 56px 20px 0; }
 }
 </style>
 </head>
@@ -572,26 +611,15 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
 </section>
 
 <nav class="nav-tabs" id="nav-tabs">
-  <button class="tab-btn active" onclick="showTab('love', this)">
-    With Love <small>우리의 이야기</small>
-  </button>
-  <button class="tab-btn" onclick="showTab('korea', this)">
-    Korea <small>한국 예식</small>
-  </button>
-  <button class="tab-btn" onclick="showTab('us', this)">
-    US Reception <small>미국 리셉션</small>
-  </button>
-  <button class="tab-btn" onclick="showTab('rsvp', this)">
-    RSVP <small>참석여부</small>
-  </button>
-  <button class="tab-btn" onclick="showTab('gift', this)">
-    Gift <small>축의</small>
-  </button>
-  <button class="tab-btn" onclick="showTab('gallery', this)">
-    Gallery <small>갤러리</small>
-  </button>
+  <button class="tab-btn active" onclick="showTab('love', this)">With Love <small>우리의 이야기</small></button>
+  <button class="tab-btn" onclick="showTab('korea', this)">Korea <small>한국 예식</small></button>
+  <button class="tab-btn" onclick="showTab('us', this)">US Reception <small>미국 리셉션</small></button>
+  <button class="tab-btn" onclick="showTab('rsvp', this)">RSVP <small>참석여부</small></button>
+  <button class="tab-btn" onclick="showTab('gift', this)">Gift <small>축의</small></button>
+  <button class="tab-btn" onclick="showTab('gallery', this)">Gallery <small>갤러리</small></button>
 </nav>
 
+<!-- ── WITH LOVE ── -->
 <div class="tab-panel active" id="tab-love">
   <div class="tab-section">
     <p class="eyebrow reveal">WITH LOVE</p>
@@ -613,7 +641,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
       We would be honored to have you<br>
       bless the first page of our story.
     </p>
-
     <div class="family-info reveal d4">
       <div class="family-side">
         <p class="family-label">GROOM</p>
@@ -638,8 +665,11 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
+<!-- ── KOREA ── -->
 <div class="tab-panel" id="tab-korea">
   <div class="tab-section">
+
+    <!-- SAVE THE DATE 블록 -->
     <p class="eyebrow reveal">SAVE THE DATE</p>
     <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
     <p class="big-date reveal d2">2026.11.21</p>
@@ -661,53 +691,67 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
 
     <div class="countdown reveal d4" id="countdown-korea"></div>
 
-    <div style="margin-top:64px;">
-      <p class="eyebrow reveal">KOREA CEREMONY</p>
-      <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
-      <p class="venue-time reveal d2">2026년 11월 21일 토요일 오후 5시</p>
-      <p class="venue-name reveal d2">트라디노이</p>
-      <p class="venue-address reveal d2">서울 강남구 도곡로99길 16 6층</p>
-      <a class="btn gold reveal d3" target="_blank" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
+    <div class="reveal d5" style="margin-top: 16px;">
+      <a class="cal-add-btn" href="./korea-wedding.ics" download>
+        <span class="cal-icon">📅</span> 캘린더에 추가하기
+      </a>
     </div>
+
+  </div>
+
+  <!-- 섹션 분리 -->
+  <div class="section-divider reveal">
+    <span class="section-divider-icon">✦</span>
+  </div>
+
+  <!-- VENUE 블록 -->
+  <div class="venue-block">
+    <p class="eyebrow reveal">KOREA CEREMONY</p>
+    <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
+    <p class="venue-time reveal d2">2026년 11월 21일 토요일 오후 5시</p>
+    <p class="venue-name reveal d2">트라디노이</p>
+    <p class="venue-address reveal d2">서울 강남구 도곡로99길 16 6층</p>
+    <a class="btn gold reveal d3" target="_blank" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
 
     <div class="transport reveal d4">
       <div class="transport-item">
         <span class="transport-icon">🚇</span>
         <span class="transport-text">
-          <span class="transport-label">지하철</span>
-          삼성역 3번출구 도보 8분
+          <span class="transport-label">지하철</span>삼성역 3번출구 도보 8분
         </span>
       </div>
       <div class="transport-item">
         <span class="transport-icon">🚌</span>
         <span class="transport-text">
-          <span class="transport-label">버스</span>
-          강남01, 강남06, 4319
+          <span class="transport-label">버스</span>강남01, 강남06, 4319
         </span>
       </div>
       <div class="transport-item">
         <span class="transport-icon">🚗</span>
         <span class="transport-text">
-          <span class="transport-label">자차</span>
-          도곡로99길 16
+          <span class="transport-label">자차</span>도곡로99길 16
         </span>
       </div>
     </div>
 
-    <div class="no-flower reveal d4">
+    <div class="no-flower reveal d4" style="max-width:340px; margin: 32px auto 0;">
       화환은 정중히 사양하며<br>
       따뜻한 마음만 감사히 받겠습니다.
     </div>
   </div>
+  <div style="padding-bottom: 80px;"></div>
 </div>
 
+<!-- ── US RECEPTION ── -->
 <div class="tab-panel" id="tab-us">
   <div class="tab-section">
+
+    <!-- SAVE THE DATE 블록 -->
     <p class="eyebrow reveal">SAVE THE DATE</p>
     <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
     <p class="big-date reveal d2">2026.12.12</p>
 
-    <div class="calendar reveal d3" id="cal-us">
+    <div class="calendar reveal d3">
       <div class="day-header">SUN</div><div class="day-header">MON</div><div class="day-header">TUE</div>
       <div class="day-header">WED</div><div class="day-header">THU</div><div class="day-header">FRI</div><div class="day-header">SAT</div>
       <div class="day"></div><div class="day"></div>
@@ -722,17 +766,32 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
 
     <div class="countdown reveal d4" id="countdown-us"></div>
 
-    <div style="margin-top:64px;">
-      <p class="eyebrow reveal">US RECEPTION</p>
-      <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
-      <p class="venue-time reveal d2">December 12, 2026  ·  5:00 PM</p>
-      <p class="venue-name reveal d2">The Golf Club at Twin Creeks</p>
-      <p class="venue-address reveal d2">501 Twin Creeks Dr, Allen, TX</p>
-      <a class="btn gold reveal d3" target="_blank" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">Open Map</a>
+    <div class="reveal d5" style="margin-top: 16px;">
+      <a class="cal-add-btn" href="./us-reception.ics" download>
+        <span class="cal-icon">📅</span> Add to Calendar
+      </a>
     </div>
+
   </div>
+
+  <!-- 섹션 분리 -->
+  <div class="section-divider reveal">
+    <span class="section-divider-icon">✦</span>
+  </div>
+
+  <!-- VENUE 블록 -->
+  <div class="venue-block">
+    <p class="eyebrow reveal">US RECEPTION</p>
+    <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
+    <p class="venue-time reveal d2">December 12, 2026 &nbsp;·&nbsp; 5:00 PM</p>
+    <p class="venue-name reveal d2">The Golf Club at Twin Creeks</p>
+    <p class="venue-address reveal d2">501 Twin Creeks Dr, Allen, TX</p>
+    <a class="btn gold reveal d3" target="_blank" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">Open Map</a>
+  </div>
+  <div style="padding-bottom: 80px;"></div>
 </div>
 
+<!-- ── RSVP ── -->
 <div class="tab-panel" id="tab-rsvp">
   <div class="rsvp-wrap">
     <div style="max-width:680px; margin:0 auto;">
@@ -740,12 +799,10 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
       <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
       <p class="rsvp-note reveal d2">원활한 행사 준비를 위해 참석 여부를 알려주세요.</p>
       <div class="rsvp-buttons reveal d3">
-        <a class="btn" target="_blank"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSe38liaa5thvH1CPdNrjFdSmInJ8nLX7PiRI-REKUTNxjpjlg/viewform?usp=sharing&ouid=111656401123429383917">
+        <a class="btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSe38liaa5thvH1CPdNrjFdSmInJ8nLX7PiRI-REKUTNxjpjlg/viewform?usp=sharing&ouid=111656401123429383917">
           KOREA CEREMONY
         </a>
-        <a class="btn" target="_blank"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfIYi80qqWKf3bjINlNHsXl37tNzMcvWQ9e1v8JbNKh1fnJHw/viewform?usp=publish-editor">
+        <a class="btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfIYi80qqWKf3bjINlNHsXl37tNzMcvWQ9e1v8JbNKh1fnJHw/viewform?usp=publish-editor">
           US RECEPTION
         </a>
       </div>
@@ -753,20 +810,21 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
+<!-- ── GIFT ── -->
 <div class="tab-panel" id="tab-gift">
   <div class="tab-section">
     <p class="eyebrow reveal">GIFT</p>
     <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
 
     <div class="gift-card reveal d2">
-      <p class="gift-flag">🇰🇷   한국 계좌</p>
+      <p class="gift-flag">🇰🇷 &nbsp; 한국 계좌</p>
       <p class="gift-number" id="kr-account">992801-01-138235</p>
-      <p class="gift-name">국민은행  ·  김정혜</p>
+      <p class="gift-name">국민은행 &nbsp;·&nbsp; 김정혜</p>
       <button class="gift-copy-btn" onclick="copyOnlyNumbers()">복사하기</button>
     </div>
 
     <div class="gift-card reveal d3">
-      <p class="gift-flag">🇺🇸   Venmo / Zelle</p>
+      <p class="gift-flag">🇺🇸 &nbsp; Venmo / Zelle</p>
       <p class="gift-number">@danieljeonghye</p>
       <p class="gift-name">Venmo or Zelle</p>
     </div>
@@ -781,6 +839,7 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
+<!-- ── GALLERY ── -->
 <div class="tab-panel" id="tab-gallery">
   <div class="tab-section">
     <p class="eyebrow reveal">GALLERY</p>
@@ -798,7 +857,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- 토스트 알림창 요소 추가 -->
 <div id="toast" class="toast">계좌번호가 복사되었습니다.</div>
 
 <footer>
@@ -811,17 +869,12 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
 function showTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-
   const panel = document.getElementById('tab-' + id);
   panel.classList.add('active');
   btn.classList.add('active');
-
-  const nav = document.getElementById('nav-tabs');
-  window.scrollTo({ top: nav.offsetTop, behavior: 'smooth' });
-
+  window.scrollTo({ top: document.getElementById('nav-tabs').offsetTop, behavior: 'smooth' });
   const revealEls = panel.querySelectorAll('.reveal');
   revealEls.forEach(el => el.classList.remove('go'));
-
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       revealEls.forEach(el => el.classList.add('go'));
@@ -829,7 +882,6 @@ function showTab(id, btn) {
   });
 }
 
-// ─── FIRE REVEALS on initial load for first tab ───
 window.addEventListener('load', () => {
   const first = document.querySelectorAll('#tab-love .reveal');
   requestAnimationFrame(() => {
@@ -840,9 +892,10 @@ window.addEventListener('load', () => {
 });
 
 // ─── COUNTDOWN ───
+// Korea: 2026-11-21 17:00 KST = UTC+9 → 2026-11-21T08:00:00Z
+// Dallas: 2026-12-12 17:00 CST = UTC-6 → 2026-12-12T23:00:00Z
 const targetKorea = new Date("2026-11-21T08:00:00Z");
 const targetUS    = new Date("2026-12-12T23:00:00Z");
-
 const fmt = n => String(n).padStart(2, '0');
 
 function countdownHTML(target) {
@@ -860,32 +913,30 @@ function countdownHTML(target) {
   `;
 }
 
-// 한국 계좌 복사 및 토스트 알림 스크립트
+function updateCountdowns() {
+  const k = document.getElementById("countdown-korea");
+  const u = document.getElementById("countdown-us");
+  if (k) k.innerHTML = countdownHTML(targetKorea);
+  if (u) u.innerHTML = countdownHTML(targetUS);
+}
+updateCountdowns();
+setInterval(updateCountdowns, 1000);
+
+// ─── COPY ACCOUNT ───
 function copyOnlyNumbers() {
   const rawText = document.getElementById('kr-account').innerText;
   const cleanNumbers = rawText.replace(/[^0-9]/g, '');
-
-  // 토스트 알림을 띄우는 내부 함수
   const showToast = () => {
     const toast = document.getElementById('toast');
     toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 2000); // 2초 뒤 사라짐
+    setTimeout(() => toast.classList.remove('show'), 2000);
   };
-
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(cleanNumbers).then(() => {
-      showToast();
-    }).catch(err => {
-      fallbackCopy(cleanNumbers, showToast);
-    });
+    navigator.clipboard.writeText(cleanNumbers).then(showToast).catch(() => fallbackCopy(cleanNumbers, showToast));
   } else {
     fallbackCopy(cleanNumbers, showToast);
   }
 }
-
-// 구형 기기 및 브라우저 호환성용 복사 로직
 function fallbackCopy(text, callback) {
   const t = document.createElement("textarea");
   document.body.appendChild(t);
@@ -895,15 +946,6 @@ function fallbackCopy(text, callback) {
   document.body.removeChild(t);
   callback();
 }
-
-function updateCountdowns() {
-  const k = document.getElementById("countdown-korea");
-  const u = document.getElementById("countdown-us");
-  if (k) k.innerHTML = countdownHTML(targetKorea);
-  if (u) u.innerHTML = countdownHTML(targetUS);
-}
-updateCountdowns();
-setInterval(updateCountdowns, 1000);
 </script>
 
 </body>
