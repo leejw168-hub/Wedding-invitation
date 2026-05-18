@@ -537,21 +537,44 @@ h1, .names { display: none; }
 
 /* ─── GALLERY ─── */
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  columns: 2;
+  column-gap: 6px;
   max-width: 640px;
   margin: 0 auto;
 }
-.gallery img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  filter: grayscale(15%);
-  transition: filter 0.4s ease, transform 0.4s ease;
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 6px;
+  overflow: hidden;
   display: block;
 }
-.gallery img:hover { filter: grayscale(0%); transform: scale(1.02); }
+.gallery-item img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  filter: grayscale(10%);
+  transition: filter 0.4s ease, transform 0.5s ease;
+}
+.gallery-item:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+/* 첫 번째 사진 — 크게 (세로 길게) */
+.gallery-item:nth-child(1) img { aspect-ratio: 3/4; }
+/* 두 번째 — 정사각형 */
+.gallery-item:nth-child(2) img { aspect-ratio: 1/1; }
+/* 세 번째 — 가로 넓게 */
+.gallery-item:nth-child(3) img { aspect-ratio: 4/3; }
+/* 네 번째 — 세로 길게 */
+.gallery-item:nth-child(4) img { aspect-ratio: 2/3; }
+/* 다섯 번째 — 정사각형 */
+.gallery-item:nth-child(5) img { aspect-ratio: 1/1; }
+/* 여섯 번째 — 세로 */
+.gallery-item:nth-child(6) img { aspect-ratio: 3/4; }
+/* 일곱 번째 — 가로 */
+.gallery-item:nth-child(7) img { aspect-ratio: 4/3; }
+/* 여덟 번째 — 세로 길게 */
+.gallery-item:nth-child(8) img { aspect-ratio: 2/3; }
 
 /* ─── FOOTER ─── */
 footer { padding: 60px 20px; background: var(--black); color: var(--white); }
@@ -851,14 +874,14 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
     <p class="eyebrow reveal">GALLERY</p>
     <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
     <div class="gallery reveal d2">
-      <img src="img1.jpg" alt="1">
-      <img src="img2.jpg" alt="2">
-      <img src="img3.jpg" alt="3">
-      <img src="img4.jpg" alt="4">
-      <img src="img5.jpg" alt="5">
-      <img src="img6.jpg" alt="6">
-      <img src="img7.jpg" alt="7">
-      <img src="img8.jpg" alt="8">
+      <div class="gallery-item"><img src="img1.jpg" alt="1"></div>
+      <div class="gallery-item"><img src="img2.jpg" alt="2"></div>
+      <div class="gallery-item"><img src="img3.jpg" alt="3"></div>
+      <div class="gallery-item"><img src="img4.jpg" alt="4"></div>
+      <div class="gallery-item"><img src="img5.jpg" alt="5"></div>
+      <div class="gallery-item"><img src="img6.jpg" alt="6"></div>
+      <div class="gallery-item"><img src="img7.jpg" alt="7"></div>
+      <div class="gallery-item"><img src="img8.jpg" alt="8"></div>
     </div>
   </div>
 </div>
