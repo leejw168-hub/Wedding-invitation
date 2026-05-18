@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daniel & Jeonghye Wedding</title>
 
+<meta property="og:title" content="Daniel & Jeonghye Wedding" />
+<meta property="og:description" content="저희의 첫 페이지를 함께 축복해주세요." />
+<meta property="og:image" content="https://leejw168-hub.github.io/Wedding-invitation/img/og-image.jpg" /> <meta property="og:url" content="https://leejw168-hub.github.io/Wedding-invitation/" />
+<meta property="og:type" content="website" />
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -116,7 +121,7 @@ h1, .names { display: none; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
-/* ─── REVEAL — triggered by class, not scroll ─── */
+/* ─── REVEAL ─── */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -175,24 +180,24 @@ h1, .names { display: none; }
   margin: 0;
 }
 
-/* ─── INTRO ─── */
+/* ─── INTRO (WITH LOVE TEXT BALANCE) ─── */
 .intro-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px; /* 한영 균형을 맞추기 위해 한국어 폰트 크기 살짝 축소 */
   font-weight: 300;
-  line-height: 2.1;
-  color: #444;
-  font-style: italic;
+  line-height: 2.2;
+  color: #333;
+  letter-spacing: -0.3px; /* 한국어 자간을 단정하게 정렬 */
   margin: 0;
 }
 .intro-en {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
+  font-size: 14.5px; /* 영어 서체 크기 최적화 */
   font-weight: 300;
   font-style: italic;
-  line-height: 2;
-  color: #bbb;
-  margin-top: 28px;
+  line-height: 2.1;
+  color: #666; /* 조금 더 은은하고 세련되게 톤 조절 */
+  margin-top: 32px;
 }
 .no-flower {
   font-family: 'Noto Serif KR', serif;
@@ -204,10 +209,10 @@ h1, .names { display: none; }
   margin-top: 32px;
 }
 
-/* ─── FAMILY INFO ─── */
+/* ─── FAMILY INFO (BILINGUAL COMPATIBLE) ─── */
 .family-info {
-  margin-top: 40px;
-  padding-top: 36px;
+  margin-top: 48px;
+  padding-top: 40px;
   border-top: 1px solid var(--light-gray);
   display: flex;
   justify-content: center;
@@ -215,35 +220,57 @@ h1, .names { display: none; }
 }
 .family-side {
   flex: 1;
-  max-width: 200px;
-  padding: 0 24px;
+  max-width: 240px;
+  padding: 0 16px;
 }
 .family-label {
   font-family: 'Cinzel', serif;
   font-size: 9px;
   letter-spacing: 4px;
   color: var(--gold);
-  margin: 0 0 10px;
+  margin: 0 0 14px;
 }
 .family-parents {
   font-family: 'Noto Serif KR', serif;
   font-size: 12px;
   color: var(--gray);
   line-height: 1.8;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
+}
+.family-parents-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: #aaa;
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
+}
+.family-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
 .family-name-kr {
   font-family: 'Noto Serif KR', serif;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 400;
   letter-spacing: 3px;
   color: var(--black);
   margin: 0;
 }
+.family-name-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: var(--gray);
+  margin: 0;
+}
 .family-divider-v {
   width: 1px;
   background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-  min-height: 80px;
+  min-height: 120px;
   flex-shrink: 0;
 }
 
@@ -494,19 +521,20 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   .countdown-number { font-size: 26px; }
   .transport { max-width: 100%; }
   .tab-btn { padding: 16px 11px 14px; font-size: 7.5px; letter-spacing: 1.5px; }
+  .family-side { padding: 0 8px; }
+  .family-name-kr { font-size: 18px; }
+  .family-name-en { font-size: 12px; }
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero" style="max-width:none;">
   <h1>WE ARE GETTING MARRIED</h1>
   <div class="names">Daniel & Jeonghye</div>
   <div class="scroll-indicator">SCROLL</div>
 </section>
 
-<!-- STICKY NAV TABS -->
 <nav class="nav-tabs" id="nav-tabs">
   <button class="tab-btn active" onclick="showTab('love', this)">
     With Love <small>우리의 이야기</small>
@@ -528,7 +556,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </button>
 </nav>
 
-<!-- ══ TAB: WITH LOVE ══ -->
 <div class="tab-panel active" id="tab-love">
   <div class="tab-section">
     <p class="eyebrow reveal">WITH LOVE</p>
@@ -553,21 +580,28 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
 
     <div class="family-info reveal d4">
       <div class="family-side">
-        <p class="family-label">신랑</p>
+        <p class="family-label">GROOM</p>
         <p class="family-parents">이성근 · 안선영의 차남</p>
-        <p class="family-name-kr">이재원</p>
+        <p class="family-parents-en">Second son of Sungkun Lee & Sunyoung Ahn</p>
+        <div class="family-name-container">
+          <p class="family-name-kr">이재원</p>
+          <p class="family-name-en">Daniel</p>
+        </div>
       </div>
       <div class="family-divider-v"></div>
       <div class="family-side">
-        <p class="family-label">신부</p>
+        <p class="family-label">BRIDE</p>
         <p class="family-parents">김동식 · 최현옥의 장녀</p>
-        <p class="family-name-kr">김정혜</p>
+        <p class="family-parents-en">Eldest daughter of Dongsik Kim & Hyunok Choi</p>
+        <div class="family-name-container">
+          <p class="family-name-kr">김정혜</p>
+          <p class="family-name-en">Jeonghye</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ TAB: KOREA CEREMONY ══ -->
 <div class="tab-panel" id="tab-korea">
   <div class="tab-section">
     <p class="eyebrow reveal">SAVE THE DATE</p>
@@ -630,6 +664,7 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
     </div>
   </div>
 </div>
+
 <div class="tab-panel" id="tab-us">
   <div class="tab-section">
     <p class="eyebrow reveal">SAVE THE DATE</p>
@@ -639,7 +674,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
     <div class="calendar reveal d3" id="cal-us">
       <div class="day-header">SUN</div><div class="day-header">MON</div><div class="day-header">TUE</div>
       <div class="day-header">WED</div><div class="day-header">THU</div><div class="day-header">FRI</div><div class="day-header">SAT</div>
-      <!-- Dec 1 = Tuesday, so 2 empty slots -->
       <div class="day"></div><div class="day"></div>
       <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div>
       <div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div>
@@ -655,7 +689,7 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
     <div style="margin-top:64px;">
       <p class="eyebrow reveal">US RECEPTION</p>
       <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
-      <p class="venue-time reveal d2">December 12, 2026 &nbsp;·&nbsp; 5:00 PM</p>
+      <p class="venue-time reveal d2">December 12, 2026  ·  5:00 PM</p>
       <p class="venue-name reveal d2">The Golf Club at Twin Creeks</p>
       <p class="venue-address reveal d2">501 Twin Creeks Dr, Allen, TX</p>
       <a class="btn gold reveal d3" target="_blank" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">Open Map</a>
@@ -663,7 +697,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- ══ TAB: RSVP ══ -->
 <div class="tab-panel" id="tab-rsvp">
   <div class="rsvp-wrap">
     <div style="max-width:680px; margin:0 auto;">
@@ -684,20 +717,19 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- ══ TAB: GIFT ══ -->
 <div class="tab-panel" id="tab-gift">
   <div class="tab-section">
     <p class="eyebrow reveal">GIFT</p>
     <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
 
     <div class="gift-card reveal d2">
-      <p class="gift-flag">🇰🇷 &nbsp; 한국 계좌</p>
+      <p class="gift-flag">🇰🇷   한국 계좌</p>
       <p class="gift-number">000-0000-000000</p>
-      <p class="gift-name">은행명 &nbsp;·&nbsp; 예금주</p>
+      <p class="gift-name">은행명  ·  예금주</p>
     </div>
 
     <div class="gift-card reveal d3">
-      <p class="gift-flag">🇺🇸 &nbsp; Venmo / Zelle</p>
+      <p class="gift-flag">🇺🇸   Venmo / Zelle</p>
       <p class="gift-number">@danieljeonghye</p>
       <p class="gift-name">Venmo or Zelle</p>
     </div>
@@ -712,7 +744,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- ══ TAB: GALLERY ══ -->
 <div class="tab-panel" id="tab-gallery">
   <div class="tab-section">
     <p class="eyebrow reveal">GALLERY</p>
@@ -730,7 +761,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-names">Daniel & Jeonghye</div>
   <div class="footer-year">— 2026 —</div>
@@ -739,24 +769,19 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
 <script>
 // ─── TAB SWITCHING ───
 function showTab(id, btn) {
-  // hide all
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-  // show selected
   const panel = document.getElementById('tab-' + id);
   panel.classList.add('active');
   btn.classList.add('active');
 
-  // scroll to top of nav
   const nav = document.getElementById('nav-tabs');
   window.scrollTo({ top: nav.offsetTop, behavior: 'smooth' });
 
-  // reset all reveals in this panel then fire them immediately
   const revealEls = panel.querySelectorAll('.reveal');
   revealEls.forEach(el => el.classList.remove('go'));
 
-  // use rAF to ensure repaint before adding class
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       revealEls.forEach(el => el.classList.add('go'));
@@ -775,8 +800,6 @@ window.addEventListener('load', () => {
 });
 
 // ─── COUNTDOWN ───
-// Korea:  2026-11-21 17:00 KST = 2026-11-21T08:00:00Z
-// Dallas: 2026-12-12 17:00 CST = 2026-12-12T23:00:00Z
 const targetKorea = new Date("2026-11-21T08:00:00Z");
 const targetUS    = new Date("2026-12-12T23:00:00Z");
 
