@@ -496,15 +496,16 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
       그 다음엔 기다림이었습니다.<br><br>
       그 모든 것을 지나,<br>
       오늘 여기 서 있습니다.<br><br>
-      저희의 첫 페이지를 함께<br>
-      축복해주시면 감사하겠습니다.
+      저희의 첫 페이지를<br>
+      함께 축복해주시면 감사하겠습니다.
     </p>
     <p class="intro-en reveal d3">
       First it was chance,<br>
       then it was choice,<br>
       then it was waiting.<br><br>
       And now, it's this.<br><br>
-      Would you share this beginning with us.
+      We would be honored to have you<br>
+      bless the first page of our story.
     </p>
     <div class="no-flower reveal d4">
       화환은 정중히 사양하며<br>
@@ -718,10 +719,15 @@ window.addEventListener('load', () => {
 });
 
 // ─── COUNTDOWN ───
+// Korea:  2026-11-21 17:00 KST = 2026-11-21T08:00:00Z
+// Dallas: 2026-12-12 17:00 CST = 2026-12-12T23:00:00Z
+const targetKorea = new Date("2026-11-21T08:00:00Z");
+const targetUS    = new Date("2026-12-12T23:00:00Z");
+
 const fmt = n => String(n).padStart(2, '0');
 
 function countdownHTML(target) {
-  const diff = target - new Date();
+  const diff = target.getTime() - Date.now();
   if (diff <= 0) return "<div style='font-family:\"Cormorant Garamond\",serif;font-size:20px;font-weight:300;font-style:italic;color:#aaa;margin-top:30px;'>축하해주셔서 감사합니다 ♡</div>";
   const d = Math.floor(diff / 86400000);
   const h = Math.floor((diff / 3600000) % 24);
@@ -734,9 +740,6 @@ function countdownHTML(target) {
     <div class="countdown-box"><span class="countdown-number">${fmt(s)}</span><span class="countdown-label">SEC</span></div>
   `;
 }
-
-const targetKorea = new Date("2026-11-21T17:00:00");
-const targetUS    = new Date("2026-12-12T17:00:00");
 
 function updateCountdowns() {
   const k = document.getElementById("countdown-korea");
