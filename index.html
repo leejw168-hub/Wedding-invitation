@@ -890,12 +890,11 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   <div class="map-preview-wrap reveal d3"
      onclick="window.open('https://map.naver.com/v5/search/트라디노이','_blank')">
 
-    <img
+  <img
     class="map-preview-img"
-    src="https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?w=340&h=180&center=127.0545,37.5040&level=16&markers=type:d|size:mid|pos:127.0545 37.5040"
+    src="https://maps.googleapis.com/maps/api/staticmap?center=37.5040,127.0545&zoom=15&size=340x180&markers=color:0xb8965a%7C37.5040,127.0545"
     alt="지도"
     loading="lazy"
-    onerror="this.style.display='none'; this.parentElement.style.background='#f2efe9';"
   >
 
   <div class="map-pin-overlay">
