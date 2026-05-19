@@ -412,6 +412,52 @@ h1, .names { display: none; }
   margin: 10px 0;
 }
 
+/* ─── EMBED MAP ─── */
+.map-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 24px auto 16px;
+  border: 1px solid var(--light-gray);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  background: #eee;
+}
+.map-iframe {
+  width: 100%;
+  height: 280px;
+  display: block;
+  border: none;
+}
+
+/* ─── MAP BUTTONS GROUP ─── */
+.map-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  max-width: 480px;
+  margin: 0 auto 32px;
+  padding: 0 10px;
+}
+.map-buttons .btn-map-app {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 0;
+  border: 1px solid var(--black);
+  text-decoration: none;
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  background: var(--white);
+}
+.map-buttons .btn-map-app:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
 /* ─── TRANSPORT ─── */
 .transport {
   display: flex;
@@ -689,6 +735,8 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   .venue-block { padding: 56px 20px 0; }
   .lightbox-prev { left: 0; padding: 12px 12px; }
   .lightbox-next { right: 0; padding: 12px 12px; }
+  .map-buttons { gap: 4px; }
+  .map-buttons .btn-map-app { font-size: 10px; padding: 8px 0; }
 }
 </style>
 </head>
@@ -709,7 +757,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   <button class="tab-btn" onclick="showTab('gallery', this)">Gallery <small>갤러리</small></button>
 </nav>
 
-<!-- ── WITH LOVE ── -->
 <div class="tab-panel active" id="tab-love">
   <div class="tab-section">
     <p class="eyebrow reveal">WITH LOVE</p>
@@ -755,7 +802,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- ── KOREA ── -->
 <div class="tab-panel" id="tab-korea">
   <div class="tab-section">
     <p class="eyebrow reveal">SAVE THE DATE</p>
@@ -789,7 +835,17 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
     <p class="venue-time reveal d2">2026년 11월 21일 토요일 오후 5시</p>
     <p class="venue-name reveal d2">트라디노이</p>
     <p class="venue-address reveal d2">서울 강남구 도곡로99길 16 6층</p>
-    <a class="btn gold reveal d3" target="_blank" href="https://maps.google.com/?q=도곡로99길16">지도 보기</a>
+    
+    <div class="map-container reveal d3">
+      <iframe class="map-iframe" src="https://map.kakao.com/link/map/트라디노이,37.502047,127.062967" allowfullscreen></iframe>
+    </div>
+
+    <div class="map-buttons reveal d3">
+      <a href="https://map.naver.com/v5/search/%ED%8A%B8%EB%9D%BC%EB%94%94%EB%85%B8%EC%9D%B4" target="_blank" class="btn-map-app">🗺️ 네이버 지도</a>
+      <a href="https://map.kakao.com/link/to/%ED%8A%B8%EB%9D%BC%EB%94%94%EB%85%B8%EC%9D%B4,37.502047,127.062967" target="_blank" class="btn-map-app">💛 카카오맵</a>
+      <a href="https://apis.openapi.sk.com/tmap/app/routes?appKey=&name=%ED%8A%B8%EB%9D%BC%EB%94%94%EB%85%B8%EC%9D%B4&lon=127.062967&lat=37.502047" target="_blank" class="btn-map-app">🚘 티맵 (Tmap)</a>
+    </div>
+
     <div class="transport reveal d4">
       <div class="transport-item">
         <span class="transport-icon">🚇</span>
@@ -811,7 +867,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   <div style="padding-bottom: 80px;"></div>
 </div>
 
-<!-- ── US RECEPTION ── -->
 <div class="tab-panel" id="tab-us">
   <div class="tab-section">
     <p class="eyebrow reveal">SAVE THE DATE</p>
@@ -839,7 +894,7 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   <div class="venue-block">
     <p class="eyebrow reveal">US RECEPTION</p>
     <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
-    <p class="venue-time reveal d2">December 12, 2026 &nbsp;·&nbsp; 5:00 PM</p>
+    <p class="venue-time reveal d2">December 12, 2026  ·  5:00 PM</p>
     <p class="venue-name reveal d2">The Golf Club at Twin Creeks</p>
     <p class="venue-address reveal d2">501 Twin Creeks Dr, Allen, TX</p>
     <a class="btn gold reveal d3" target="_blank" href="https://maps.google.com/?q=501 Twin Creeks Dr Allen TX">Open Map</a>
@@ -847,7 +902,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   <div style="padding-bottom: 80px;"></div>
 </div>
 
-<!-- ── RSVP ── -->
 <div class="tab-panel" id="tab-rsvp">
   <div class="rsvp-wrap">
     <div style="max-width:680px; margin:0 auto;">
@@ -868,19 +922,18 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- ── GIFT ── -->
 <div class="tab-panel" id="tab-gift">
   <div class="tab-section">
     <p class="eyebrow reveal">GIFT</p>
     <div class="ornament reveal d1"><div class="ornament-diamond"></div></div>
     <div class="gift-card reveal d2">
-      <p class="gift-flag">🇰🇷 &nbsp; 한국 계좌</p>
+      <p class="gift-flag">🇰🇷   한국 계좌</p>
       <p class="gift-number" id="kr-account">992801-01-138235</p>
-      <p class="gift-name">국민은행 &nbsp;·&nbsp; 김정혜</p>
+      <p class="gift-name">국민은행  ·  김정혜</p>
       <button class="gift-copy-btn" onclick="copyOnlyNumbers()">복사하기</button>
     </div>
     <div class="gift-card reveal d3">
-      <p class="gift-flag">🇺🇸 &nbsp; Venmo / Zelle</p>
+      <p class="gift-flag">🇺🇸   Venmo / Zelle</p>
       <p class="gift-number">@Daniel-Lee-90428 / likejh2000@gmail.com</p>
       <p class="gift-name">Venmo or Zelle</p>
     </div>
@@ -893,7 +946,6 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- ── GALLERY ── -->
 <div class="tab-panel" id="tab-gallery">
   <div class="tab-section">
     <p class="eyebrow reveal">GALLERY</p>
@@ -911,12 +963,11 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   </div>
 </div>
 
-<!-- ── LIGHTBOX ── -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <button class="lightbox-prev" onclick="event.stopPropagation(); changePhoto(-1)">&#8249;</button>
+  <button class="lightbox-prev" onclick="event.stopPropagation(); changePhoto(-1)">‹</button>
   <img class="lightbox-img" id="lightbox-img" src="" alt="">
-  <button class="lightbox-next" onclick="event.stopPropagation(); changePhoto(1)">&#8250;</button>
+  <button class="lightbox-next" onclick="event.stopPropagation(); changePhoto(1)">›</button>
   <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
