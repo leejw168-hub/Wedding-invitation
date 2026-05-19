@@ -609,53 +609,42 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   .toast.show { transform: translateX(50%) translateY(0); }
   .venue-block { padding: 56px 20px 0; }
 }
-  /* ─── GALLERY MODAL CSS ─── */
-.gallery-modal {
-  display: none; /* 기본적으로 숨김 */
-  position: fixed;
-  z-index: 2000; /* 네비게이션바(100)보다 위에 배치 */
-  padding-top: 60px;
-  left: 0;
-  top: 0;
+ /* ─── GALLERY REFACTOR ─── */
+.gallery {
+  columns: 2;
+  column-gap: 6px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 6px;
+  overflow: hidden;
+  display: block;
+  cursor: pointer;
+  /* 가로세로 비율 변화가 부드럽게 일어나도록 설정 */
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.gallery-item img {
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9); /* 배경을 어두운 반투명으로 */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  align-items: center;
-  justify-content: center;
-}
-
-/* 모달에 들어갈 이미지 스타일 */
-.modal-content {
-  margin: auto;
   display: block;
-  max-width: 90%;
-  max-height: 80vh;
-  object-fit: contain; /* 이미지 비율 유지 */
-  animation: zoomIn 0.3s ease; /* 나타날 때 부드러운 효과 */
+  object-fit: cover; /* 기본 상태에서는 정사각형/세로형 박스에 꽉 차게 */
+  filter: grayscale(10%);
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* 닫기 버튼 */
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
+/* 💡 터치/클릭해서 커진 상태의 스타일 */
+.gallery-item.expanded {
+  /* 이미지 원본 비율을 강제로 해제하여 사진이 가진 진짜 가로세로 비율대로 다 늘어나게 만듭니다 */
+  aspect-ratio: auto !important; 
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* 갤러리 아이템에 마우스 커서 포인터 추가 */
-.gallery-item {
-  cursor: pointer;
+.gallery-item.expanded img {
+  filter: grayscale(0%);
+  object-fit: contain; /* 단 1픽셀도 잘리지 않고 원본 그대로 다 보여주기 */
 }
 </style>
 </head>
@@ -1009,33 +998,29 @@ function fallbackCopy(text, callback) {
   document.body.removeChild(t);
   callback();
 }
-// ─── GALLERY MODAL SCRIPT ───
-// 모든 갤러리 이미지 요소를 가져옵니다.
-const galleryImages = document.querySelectorAll('.gallery-item img');
-const modal = document.getElementById('galleryModal');
-const modalImg = document.getElementById('modalImg');
-
-// 각 이미지에 클릭 이벤트 리스너 추가
-galleryImages.forEach(img => {
-  img.addEventListener('click', function(e) {
-    // 탭 전환 등 부모 요소로 이벤트가 퍼지는 것을 방지
-    e.stopPropagation(); 
+// ─── GALLERY CLICK EXPAND SCRIPT ───
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.stopPropagation();
     
-    modal.style.display = "flex";
-    modalImg.src = this.src; // 클릭한 이미지 경로를 모달 마크업에 주입
-    document.body.style.overflow = "hidden"; // 모달 오픈 시 뒷배경 스크롤 방지
+    // 이미 커져있는 사진을 누른 게 아니라면, 다른 커져있는 사진들은 원래대로 접습니다.
+    if (!this.classList.contains('expanded')) {
+      document.querySelectorAll('.gallery-item.expanded').forEach(el => {
+        el.classList.remove('expanded');
+      });
+    }
+    
+    // 현재 누른 사진을 키우거나 (이미 커져있었다면) 다시 줄입니다.
+    this.classList.toggle('expanded');
   });
 });
 
-// 모달 닫기 함수
-function closeModal() {
-  modal.style.display = "none";
-  document.body.style.overflow = "auto"; // 스크롤 다시 허용
-}
+// 갤러리 바깥 아무 곳이나 터치하면 커졌던 사진이 다시 원래대로 줄어듭니다.
+document.addEventListener('click', function() {
+  document.querySelectorAll('.gallery-item.expanded').forEach(el => {
+    el.classList.remove('expanded');
+  });
+});
 </script>
-<div id="galleryModal" class="gallery-modal" onclick="closeModal()">
-  <span class="modal-close">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
 </body>
 </html>
