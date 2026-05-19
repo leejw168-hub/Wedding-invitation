@@ -886,20 +886,24 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
     <p class="venue-name reveal d2">트라디노이</p>
     <p class="venue-address reveal d2">서울 강남구 도곡로99길 16 6층</p>
 
-    <!-- 지도 미리보기 — 오픈스트리트맵 스태틱 이미지 (API 키 불필요) -->
-    <div class="map-preview-wrap reveal d3" onclick="window.open('https://map.kakao.com/link/search/트라디노이','_blank')">
-      <img
-        class="map-preview-img"
-        src="https://static-maps.yandex.ru/1.x/?lang=ko_KR&ll=127.0545,37.5040&z=16&l=map&size=340,180&pt=127.0545,37.5040,pm2rdl"
-        onerror="this.parentElement.style.background='#f2efe9'; this.style.display='none';"
-        alt="지도"
-        loading="lazy"
-      >
-      <div class="map-pin-overlay">
-        <span class="map-pin">📍</span>
-        <span class="map-pin-label">트라디노이</span>
-      </div>
-    </div>
+    <!-- 지도 미리보기 (네이버 기반으로 수정) -->
+  <div class="map-preview-wrap reveal d3"
+     onclick="window.open('https://map.naver.com/v5/search/트라디노이','_blank')">
+
+    <img
+    class="map-preview-img"
+    src="https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?w=340&h=180&center=127.0545,37.5040&level=16&markers=type:d|size:mid|pos:127.0545 37.5040"
+    alt="지도"
+    loading="lazy"
+    onerror="this.style.display='none'; this.parentElement.style.background='#f2efe9';"
+  >
+
+  <div class="map-pin-overlay">
+    <span class="map-pin">📍</span>
+    <span class="map-pin-label">트라디노이</span>
+  </div>
+</div>
+    
 
     <!-- 지도 앱 버튼 -->
     <div class="map-apps reveal d3">
