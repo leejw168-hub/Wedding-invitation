@@ -623,6 +623,54 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
   .toast.show { transform: translateX(50%) translateY(0); }
   .venue-block { padding: 56px 20px 0; }
 }
+  /* ─── GALLERY MODAL CSS ─── */
+.gallery-modal {
+  display: none; /* 기본적으로 숨김 */
+  position: fixed;
+  z-index: 2000; /* 네비게이션바(100)보다 위에 배치 */
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* 배경을 어두운 반투명으로 */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+}
+
+/* 모달에 들어갈 이미지 스타일 */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain; /* 이미지 비율 유지 */
+  animation: zoomIn 0.3s ease; /* 나타날 때 부드러운 효과 */
+}
+
+/* 닫기 버튼 */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 갤러리 아이템에 마우스 커서 포인터 추가 */
+.gallery-item {
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -975,7 +1023,33 @@ function fallbackCopy(text, callback) {
   document.body.removeChild(t);
   callback();
 }
-</script>
+// ─── GALLERY MODAL SCRIPT ───
+// 모든 갤러리 이미지 요소를 가져옵니다.
+const galleryImages = document.querySelectorAll('.gallery-item img');
+const modal = document.getElementById('galleryModal');
+const modalImg = document.getElementById('modalImg');
 
+// 각 이미지에 클릭 이벤트 리스너 추가
+galleryImages.forEach(img => {
+  img.addEventListener('click', function(e) {
+    // 탭 전환 등 부모 요소로 이벤트가 퍼지는 것을 방지
+    e.stopPropagation(); 
+    
+    modal.style.display = "flex";
+    modalImg.src = this.src; // 클릭한 이미지 경로를 모달 마크업에 주입
+    document.body.style.overflow = "hidden"; // 모달 오픈 시 뒷배경 스크롤 방지
+  });
+});
+
+// 모달 닫기 함수
+function closeModal() {
+  modal.style.display = "none";
+  document.body.style.overflow = "auto"; // 스크롤 다시 허용
+}
+</script>
+<div id="galleryModal" class="gallery-modal" onclick="closeModal()">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
 </body>
 </html>
