@@ -886,22 +886,19 @@ footer { padding: 60px 20px; background: var(--black); color: var(--white); }
     <p class="venue-name reveal d2">트라디노이</p>
     <p class="venue-address reveal d2">서울 강남구 도곡로99길 16 6층</p>
 
-    <!-- 지도 미리보기 (네이버 기반으로 수정) -->
-  <div class="map-preview-wrap reveal d3"
-     onclick="window.open('https://map.naver.com/v5/search/트라디노이','_blank')">
-
-  <img
-    class="map-preview-img"
-    src="https://maps.googleapis.com/maps/api/staticmap?center=37.5040,127.0545&zoom=15&size=340x180&markers=color:0xb8965a%7C37.5040,127.0545"
-    alt="지도"
-    loading="lazy"
-  >
-
-  <div class="map-pin-overlay">
-    <span class="map-pin">📍</span>
-    <span class="map-pin-label">트라디노이</span>
-  </div>
-</div>
+    <!-- 지도 미리보기 (카카오맵 정적 이미지 기반으로 수정완료) -->
+    <div class="map-preview-wrap reveal d3" onclick="window.open('https://map.kakao.com/link/search/트라디노이','_blank')">
+      <img
+        class="map-preview-img"
+        src="https://m2.daumcdn.net/map_static_image/v3/w340_h180/1252994.png"
+        alt="지도"
+        loading="lazy"
+      >
+      <div class="map-pin-overlay">
+        <span class="map-pin">📍</span>
+        <span class="map-pin-label">트라디노이</span>
+      </div>
+    </div>
     
 
     <!-- 지도 앱 버튼 -->
