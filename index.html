@@ -554,6 +554,8 @@ h1, .names { display: none; }
   object-fit: cover;
   filter: grayscale(10%);
   transition: filter 0.4s ease, transform 0.4s ease;
+
+  border-radius: 4px; /* ← 이거 추가 */
 }
 .gallery-item:hover img {
   filter: grayscale(0%);
@@ -972,8 +974,16 @@ window.addEventListener('load', () => {
 
 // ─── LIGHTBOX ───
 const photos = [
-  'img1.jpg','img2.jpg','img3.jpg','img8.jpg',
-  'img5.jpg','img6.jpg','img7.jpg','img4.jpg'
+  'img1.jpg',
+  'img2.jpg',
+  'img3.jpg',
+  'img4.jpg',
+  'img5.jpg',
+  'img6.jpg',
+  'img7.jpg',
+  'img8.jpg',
+  'img9.jpg',
+  'img10.jpg'
 ];
 let currentPhoto = 0;
 
